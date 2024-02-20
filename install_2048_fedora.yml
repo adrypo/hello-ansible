@@ -1,0 +1,21 @@
+---
+- name: Install 2048
+  hosts: fedora
+  become: true
+  tasks:
+    - name: install apache2
+      ansible.builtin.yum:
+         name: httpd
+         state: latest
+    - name: install unzip
+      ansible.builtin.yum:
+         name: unzip
+         state: latest
+    - name: Unarchive files in destination
+      ansible.builtin.unarchive:
+        src: files/2048.zip
+        dest: /var/www/html/
+        remote_src: no
+        owner: root
+        group: root
+        mode: '0644'

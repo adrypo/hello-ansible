@@ -1,0 +1,13 @@
+---
+- name: Install 2048
+  hosts: debian
+  become: true
+  tasks:
+    - name: Unarchive files in destination
+      ansible.builtin.unarchive:
+        src: files/2048.zip
+        dest: /var/www/html/
+        remote_src: no
+        owner: root
+        group: root
+        mode: '0644'
