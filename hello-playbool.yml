@@ -1,0 +1,28 @@
+---
+- name: Hello, Ansible Playbook
+  hosts: all
+  become: true
+  tasks:
+    - name: Example from Ansible Playbook
+      ansible.builtin.ping:
+    - name: Print the gateway for each host when defined
+      ansible.builtin.debug:
+        msg: "{{ ansible_default_ipv4.gateway }}"
+      when: ansible_default_ipv4.gateway is defined
+    - name: install apache2
+      ansible.builtin.apt:
+         name: apache2
+    - name: install mariadb
+      ansible.builtin.apt:
+        name: mariadb-server
+    - name: Uninstall htop
+      ansible.builtin.apt:
+        name: htop
+        state: absent
+    - name: template
+      ansible.builtin.template:
+        src: helloworld.j2
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: '0644'
