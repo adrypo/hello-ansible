@@ -1,0 +1,4 @@
+---
+- name: install apache2
+  ansible.builtin.yum:
+      name: httpd

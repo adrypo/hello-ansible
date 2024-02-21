@@ -1,0 +1,6 @@
+---
+# tasks file for webserver
+- include_tasks: tasks/install_debian.yml
+  when: ansible_facts['distribution'] == 'Debian'
+- include_tasks: tasks/install_fedora.yml
+  when: ansible_facts['distribution'] == 'Fedora'

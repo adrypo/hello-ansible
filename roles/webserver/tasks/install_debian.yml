@@ -1,0 +1,7 @@
+---
+- name: apt update
+  ansible.builtin.apt:
+      update_cache: true
+- name: install apache2
+  ansible.builtin.apt:
+      name: apache2
