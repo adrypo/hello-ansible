@@ -1,0 +1,18 @@
+---
+- name: apt update
+  ansible.builtin.apt:
+      update_cache: true
+- name: install apache2
+  ansible.builtin.apt:
+      name: apache2
+- name: install unzip
+  ansible.builtin.apt:
+      name: unzip
+- name: Unarchive files in destination
+  ansible.builtin.unarchive:
+    src: files/2048.zip
+    dest: /var/www/html/
+    remote_src: no
+    owner: root
+    group: root
+    mode: '0644'

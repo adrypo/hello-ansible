@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+  tasks: 
+    - include_tasks: tasks/install_2048_debian.yml
+      when: ansible_facts['distribution'] == 'Debian'
+    - include_tasks: tasks/install_2048_fedora.yml
+      when: ansible_facts['distribution'] == 'Fedora'
+    

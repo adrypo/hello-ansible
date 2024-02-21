@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  tasks: 
+    - name: Show facts available on the system
+      ansible.builtin.debug:
+        var: ansible_facts
+    - name: install apache2 Debian
+      ansible.builtin.apt:
+         name: apache2
+      when: ansible_facts['distribution'] == 'Debian'
+    - name: install apache2 Fedora
+      ansible.builtin.yum:
+         name: httpd
+      when: ansible_facts['distribution'] == 'Fedora'
+    - name: template
+      ansible.builtin.template:
+        src: helloworld.j2
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: '0644'

@@ -1,0 +1,15 @@
+---
+- name: install apache2
+  ansible.builtin.yum:
+      name: httpd
+- name: install unzip
+  ansible.builtin.yum:
+      name: unzip
+- name: Unarchive files in destination
+  ansible.builtin.unarchive:
+    src: files/2048.zip
+    dest: /var/www/html/
+    remote_src: no
+    owner: root
+    group: root
+    mode: '0644'
