@@ -1,0 +1,10 @@
+---
+# tasks file for deploy
+- name: Unarchive files in destination
+  ansible.builtin.unarchive:
+    src: "{{ artifact }}"
+    dest: /var/www/html/
+    remote_src: no
+    owner: root
+    group: root
+    mode: '0644'

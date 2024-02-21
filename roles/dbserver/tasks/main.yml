@@ -1,17 +1,2 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.cisco.com/AXL/API/12.5">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <ns:updateLineGroup>
-            <name>LG_3588_927170283</name>
-            <addMembers>
-                <member>
-                <lineSelectionOrder>-1</lineSelectionOrder>
-                <directoryNumber>
-                    <pattern>21377</pattern>
-                    <routePartitionName>PT_INTERNAS</routePartitionName>
-                </directoryNumber>
-                </member>
-            </addMembers>
-        </ns:updateLineGroup>
-    </soapenv:Body>
-    </soapenv:Envelope>"""
+---
+# tasks file for dbserver

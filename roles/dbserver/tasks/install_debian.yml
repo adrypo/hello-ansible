@@ -2,6 +2,6 @@
 - name: apt update
   ansible.builtin.apt:
       update_cache: true
-- name: install apache2
+- name: install mariadb-server
   ansible.builtin.apt:
-      name: apache2
+      name: mariadb-server
