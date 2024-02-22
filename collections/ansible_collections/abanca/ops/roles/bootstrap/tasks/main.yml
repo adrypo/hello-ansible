@@ -1,0 +1,12 @@
+---
+# tasks file for bootstrap
+- name: install psutil
+  ansible.builtin.package:
+    name: python3-psutil
+
+- name: Get system load
+  sysload:
+  register: load
+- name: Debug sysload
+  ansible.builtin.debug:
+    msg: "{{ load }}"

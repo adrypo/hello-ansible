@@ -36,12 +36,16 @@ flake 8
 
 # ANSIBLE GALAXY
 
+Colecciones oficiales
+
+    https://galaxy.ansible.com/ui/
+
 tenemos la carpeta galaxy_ng con los ficheros necesarios
 url https://ansible.readthedocs.io/projects/galaxy-ng/en/latest/usage_guide/installation/
 
 levantamos el galaxy con 
 
-    docker-compose up
+    3-compose up
 
 Veremos si está levantado con 
 
@@ -87,11 +91,57 @@ Guia de la web
         - name: amazon.aws
         - name: ansible.posix
 
+    Despues de esto podremos ir a Repositorioes - Comunity - Sync para descargarlo
+
+Configuramos un ansible.cfg con la siguiente informacion, podremos encadenarlos por orden y tener los que queramos.
+
+
+    [galaxy]
+    server_list = community,release_galaxy
+
+    [galaxy_server.community]
+    url=http://localhost:8080/api/galaxy/content/community/
+    token=<put your token here>
+
+    [galaxy_server.release_galaxy]
+    url=https://galaxy.ansible.com/
+
+Y despues ejecutamos el siguiente comando:
+
+    ansible-galaxy collection install amazon.aws -vvv
+
+
+# Collections
+Agrupacion de roles y modulos para que la gestion de dichos elementos sea mas facil
+
+
+
+La sigueinte estructura es la convencion de ansible
+
+    mkdir collections
+    mkdir collections/ansible_collections
+    ansible-galaxy collection init NOMBRE (habitualmente es el nombre del usuario)
+    ansible-galaxy collection init abanca.ops
+
+Al crearlo veremos el siguiente arbol
+
+    tree
+    .
+    └── abanca
+        └── ops
+            ├── docs
+            ├── galaxy.yml
+            ├── meta
+            │   └── runtime.yml
+            ├── plugins
+            │   └── README.md
+            ├── README.md
+            └── roles
+
+En el playbook se puede crear un campo collections con las colecciones que se usan, para evitar poner el nombre completo. No es muy recomendable, ya que acabas perdiendo un poco el modulo que estas usando.
+
+
 # OTROS
 
 Eliminar espacios al final de una línea
     :%s/\s*$//g
-
-API TOKEN Galaxy
-
-    d75439646ccc771765cc0ba9791d94f8140f7298

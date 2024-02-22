@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - abanca.ops.bootstrap
+  #tasks:
+  # - name: Sysload
+  #   abanca.ops.sysload:
+     
+    
