@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  galaxy_ng:
+    image: quay.io/pulp/galaxy:4.9.0
+    ports:
+      - 8080:80
+    volumes:
+      - ./galaxy-importer.cfg:/etc/galaxy-importer/galaxy-importer.cfg
+    env_file: pulp_settings.env

@@ -1,0 +1,3 @@
+- src: git@github.com:adrypo/ansible-role-bootstrap.git
+  scm: git
+  version: main
