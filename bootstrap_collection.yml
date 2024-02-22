@@ -1,4 +1,5 @@
 ---
+#tiene que estar en esta carpeta para funcionar, si esta en playbook no coge bien la collection
 - hosts: all
   become: true
   roles:
